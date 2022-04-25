@@ -7,13 +7,19 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import type { MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
+
+import tailwindStyles from "./styles/generated/tailwind.css";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "DiEvent",
   viewport: "width=device-width,initial-scale=1",
 });
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: tailwindStyles },
+];
 
 export default function App() {
   return (

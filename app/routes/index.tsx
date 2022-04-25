@@ -1,7 +1,7 @@
 export default function HomeRoute() {
   return (
     <div>
-      <h1>DiEvent</h1>
+      <h1 className="text-red-500">DiEvent</h1>
     </div>
   );
 }
