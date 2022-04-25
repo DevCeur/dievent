@@ -12,7 +12,9 @@
   "scripts": {
     "dev:css": "npx tailwindcss -c ./config/tailwind/tailwind.config.js -i ./app/styles/tailwind.css -o ./app/styles/generated/tailwind.css --watch",
     "dev:app": "remix dev",
-    "build": "remix build",
+    "build:css": "npx tailwindcss -c ./config/tailwind/tailwind.config.js -i ./app/styles/tailwind.css -o ./app/styles/generated/tailwind.css --minify",
+    "build:app": "remix build",
+    "build": "npm run build:css && npm run build:app",
     "dev": "pm2-dev config/scripts/pm2.config.js"
   },
   "dependencies": {
