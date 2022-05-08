@@ -1,6 +1,8 @@
 import { createMeta } from "~/utils/createMeta";
 import { createAuthLoader } from "~/utils/createAuthLoader";
 
+import { DashboardView } from "~/views/DashboardView";
+
 export const meta = createMeta({ title: "Dasboard" });
 
 export const loader = createAuthLoader({
@@ -8,7 +10,7 @@ export const loader = createAuthLoader({
 });
 
 const DashboardRoute = () => {
-  return <div>Dashboard</div>;
+  return <DashboardView />;
 };
 
 export default DashboardRoute;

@@ -14,9 +14,11 @@ import type {
   MetaFunction,
 } from "@remix-run/node";
 
-import tailwindStyles from "./styles/generated/tailwind.css";
+import { getUserById } from "./services/user";
 
 import { MainLayout } from "./components/MainLayout";
+
+import tailwindStyles from "./styles/generated/tailwind.css";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -32,8 +34,10 @@ type LoaderData = {
   user: any;
 };
 
-export const loader: LoaderFunction = () => {
-  return { user: null };
+export const loader: LoaderFunction = async ({ request }) => {
+  const { user } = await getUserById(request);
+
+  return { user };
 };
 
 export default function App() {

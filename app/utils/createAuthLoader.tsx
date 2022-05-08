@@ -1,6 +1,9 @@
 import { redirect } from "./server/remix-node.server";
 
+import type { User } from "@prisma/client";
 import type { LoaderFunction } from "@remix-run/node";
+
+import { getUserById } from "~/services/user";
 
 import { ROUTE } from "./enum";
 import { getUserSession } from "./sessions/userSession.server";
@@ -14,27 +17,41 @@ export const createAuthLoader = ({
   isPrivate,
   loader,
 }: CreateAuthLoaderOptions) => {
-  const innerLoader: LoaderFunction = async (loaderOptions) => {
-    const { request } = loaderOptions;
+  try {
+    const innerLoader: LoaderFunction = async (loaderOptions) => {
+      let user: User | null = null;
 
-    const userSession = await getUserSession(request);
+      const { request } = loaderOptions;
 
-    const isAuthenticated = userSession.get("userId");
+      const userSession = await getUserSession(request);
 
-    if (isPrivate && !isAuthenticated) {
-      return redirect(ROUTE.HOME);
-    }
+      const userId = userSession.get("userId");
 
-    if (!isPrivate && isAuthenticated) {
-      return redirect(ROUTE.DASHBOARD);
-    }
+      if (userId) {
+        const { user: userFound } = await getUserById(request);
 
-    if (loader) {
-      return loader(loaderOptions);
-    }
+        user = userFound;
+      }
 
-    return { auth: isAuthenticated };
-  };
+      const isAuthenticated = userId && user;
 
-  return innerLoader;
+      if (isPrivate && !isAuthenticated) {
+        return redirect(ROUTE.HOME);
+      }
+
+      if (!isPrivate && isAuthenticated) {
+        return redirect(ROUTE.DASHBOARD);
+      }
+
+      if (loader) {
+        return loader(loaderOptions);
+      }
+
+      return { auth: isAuthenticated };
+    };
+
+    return innerLoader;
+  } catch (error) {
+    throw new Error(`Error trying to get authenticated user ${error}`);
+  }
 };
