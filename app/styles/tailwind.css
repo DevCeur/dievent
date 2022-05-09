@@ -16,3 +16,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  label {
+    @apply flex flex-col;
+  }
+
+  label span {
+    @apply text-sm text-gray-500 mb-2;
+  }
+
+  .button {
+    @apply text-sm font-medium py-3 px-4 rounded-lg transition-colors;
+  }
+
+  .button-solid {
+    @apply button text-white bg-brand-600 hover:bg-brand-500;
+  }
+
+  .error-message {
+    @apply text-xs text-red-500 my-2;
+  }
+}

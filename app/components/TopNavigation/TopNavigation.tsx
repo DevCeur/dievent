@@ -13,7 +13,7 @@ export const TopNavigation = ({ user }: TopNavigationProps) => {
     <nav className="bg-white/30 backdrop-blur-md border-b border-slate-100 sticky top-0">
       <div className="h-16 w-[85%] max-w-screen-xl mx-auto border-x border-slate-100 px-6 flex items-center justify-between">
         <Link to={ROUTE.HOME}>
-          <span className="text-xl text-gray-700 font-bold">DiEvent</span>
+          <span className="text-xl text-gray-700 font-semibold">DiEvent</span>
         </Link>
 
         {user ? (
