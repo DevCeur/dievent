@@ -71,3 +71,45 @@ export const registerUser = async ({
     };
   }
 };
+
+type SignInUser = {
+  email: string;
+  password: string;
+};
+
+export const signInUser = async ({
+  email,
+  password,
+}: SignInUser): Promise<{
+  user: User | null;
+  errors: UnknownObject | null;
+}> => {
+  try {
+    const user = await prisma.user.findUnique({ where: { email } });
+
+    if (!user) {
+      return {
+        user: null,
+        errors: { wrongCredentials: "Email and password don't match" },
+      };
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return {
+        user: null,
+        errors: { wrongCredentials: "Email and password don't match" },
+      };
+    }
+
+    return { user, errors: null };
+  } catch (error) {
+    return {
+      user: null,
+      errors: {
+        server: "Server error, please contact dievent@support for more info.",
+      },
+    };
+  }
+};

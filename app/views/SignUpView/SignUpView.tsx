@@ -93,7 +93,7 @@ export const SignUpView = () => {
             </label>
 
             <button type="submit" className="button-solid">
-              Continue
+              Create Account
             </button>
           </Form>
 

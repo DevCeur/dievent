@@ -31,7 +31,7 @@ export const TopNavigation = ({ user }: TopNavigationProps) => {
             <div className="flex items-center space-x-4">
               <Navlink to={ROUTE.SIGN_IN}>Login</Navlink>
               <Navlink to={ROUTE.SIGN_UP} special>
-                Create Account
+                Get Started
               </Navlink>
             </div>
           </div>
