@@ -1,11 +1,13 @@
 import { useLocation } from "@remix-run/react";
 
+import type { User } from "@prisma/client";
+
 import { ROUTE } from "~/utils/enum";
 
 import { TopNavigation } from "../TopNavigation";
 
 type MainLayoutProps = {
-  user: any;
+  user: User | null;
 };
 
 const SPECIAL_PAGES = [ROUTE.SIGN_IN, ROUTE.SIGN_UP];

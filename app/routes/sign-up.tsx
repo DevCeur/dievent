@@ -24,13 +24,25 @@ export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const userSession = await getUserSession(request);
 
+  const name = formData.get("name");
   const email = formData.get("email");
+  const username = formData.get("username");
   const password = formData.get("password");
 
   invariant(typeof email === "string");
+  invariant(typeof name === "string");
+  invariant(typeof username === "string");
   invariant(typeof password === "string");
 
   const errors: { [x: string]: string } = {};
+
+  if (!name) {
+    errors.name = ERROR_MESSAGES.REQUIRED_FIELD;
+  }
+
+  if (!username) {
+    errors.username = ERROR_MESSAGES.REQUIRED_FIELD;
+  }
 
   if (!email) {
     errors.email = ERROR_MESSAGES.REQUIRED_FIELD;
@@ -52,7 +64,12 @@ export const action: ActionFunction = async ({ request }) => {
     return { errors };
   }
 
-  const { user, errors: userErrors } = await registerUser({ email, password });
+  const { user, errors: userErrors } = await registerUser({
+    name,
+    email,
+    username,
+    password,
+  });
 
   if (userErrors) {
     return { errors: userErrors };

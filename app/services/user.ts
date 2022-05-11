@@ -31,12 +31,16 @@ export const getUserById = async (
 };
 
 type RegisterUserOptions = {
+  name: string;
   email: string;
+  username: string;
   password: string;
 };
 
 export const registerUser = async ({
+  name,
   email,
+  username,
   password,
 }: RegisterUserOptions): Promise<{
   user: User | null;
@@ -46,7 +50,7 @@ export const registerUser = async ({
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
-      data: { email, password: hashedPassword },
+      data: { name, email, username, password: hashedPassword },
     });
 
     return { user, errors: null };

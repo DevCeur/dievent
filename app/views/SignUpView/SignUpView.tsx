@@ -68,8 +68,30 @@ export const SignUpView = () => {
 
           <Form
             method="post"
-            className="w-full max-w-[350px] mb-6 flex flex-col space-y-6"
+            className="w-full max-w-[400px] mb-6 flex flex-col space-y-6"
           >
+            <div className="w-full grid grid-cols-2 gap-6">
+              <label>
+                <span>Name:</span>
+                <TextInput name="name" />
+                {actionData?.errors?.name && (
+                  <span className="error-message">
+                    {actionData.errors.name}
+                  </span>
+                )}
+              </label>
+
+              <label>
+                <span>Username:</span>
+                <TextInput name="username" />
+                {actionData?.errors?.username && (
+                  <span className="error-message">
+                    {actionData.errors.username}
+                  </span>
+                )}
+              </label>
+            </div>
+
             <label>
               <span>Email:</span>
               <TextInput type="email" name="email" />

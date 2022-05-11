@@ -1,24 +1,44 @@
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
+
+import type { User } from "@prisma/client";
 
 import { ROUTE } from "~/utils/enum";
 
 import { Navlink } from "../Navlink";
 
 type TopNavigationProps = {
-  user: any;
+  user: User | null;
 };
 
 export const TopNavigation = ({ user }: TopNavigationProps) => {
   return (
     <nav className="bg-white/30 backdrop-blur-md border-b border-slate-100 sticky top-0">
       <div className="h-16 w-[85%] max-w-screen-xl mx-auto border-x border-slate-100 px-6 flex items-center justify-between">
-        <Link to={ROUTE.HOME}>
-          <span className="text-xl text-gray-700 font-semibold">DiEvent</span>
-        </Link>
+        <div className="flex items-center">
+          <Link to={ROUTE.HOME}>
+            <span className="text-xl text-gray-700 font-semibold">DiEvent</span>
+          </Link>
+
+          {user && (
+            <span className="text-sm text-gray-500 ml-6 pl-6">
+              Hey, {user.name}!
+            </span>
+          )}
+        </div>
 
         {user ? (
-          <div>
-            <p>User Authenticated</p>
+          <div className="flex items-center space-x-4">
+            <Navlink to={ROUTE.HOME}>Profile</Navlink>
+            <Form method="post" action="/sign-out">
+              <button
+                type="submit"
+                name="subaction"
+                value="sign-out"
+                className="button text-red-500 border border-red-500"
+              >
+                Sign Out
+              </button>
+            </Form>
           </div>
         ) : (
           <div className="h-full flex items-center justify-between">

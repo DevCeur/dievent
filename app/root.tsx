@@ -13,6 +13,7 @@ import type {
   LoaderFunction,
   MetaFunction,
 } from "@remix-run/node";
+import type { User } from "@prisma/client";
 
 import { getUserById } from "./services/user";
 
@@ -31,7 +32,7 @@ export const links: LinksFunction = () => [
 ];
 
 type LoaderData = {
-  user: any;
+  user: User | null;
 };
 
 export const loader: LoaderFunction = async ({ request }) => {
