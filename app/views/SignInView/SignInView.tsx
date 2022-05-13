@@ -53,7 +53,11 @@ export const SignInView = () => {
                   Forgot your password?
                 </Link>
               </div>
-              <TextInput type="password" name="password" />
+              <TextInput
+                type="password"
+                name="password"
+                withPasswordVisibility
+              />
               {actionData?.errors?.password && (
                 <span className="error-message">
                   {actionData.errors.password}

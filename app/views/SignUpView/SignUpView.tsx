@@ -106,6 +106,7 @@ export const SignUpView = () => {
                 type="password"
                 name="password"
                 placeholder="+6 characters"
+                withPasswordVisibility
               />
               {actionData?.errors?.password && (
                 <span className="error-message">
