@@ -4,6 +4,7 @@ import type { User } from "@prisma/client";
 
 import { ROUTE } from "~/utils/enum";
 
+import { SideMenu } from "../SideMenu";
 import { TopNavigation } from "../TopNavigation";
 
 type MainLayoutProps = {
@@ -22,7 +23,20 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, user }) => {
   return (
     <div>
       <TopNavigation user={user} />
-      <div className="w-[85%] max-w-screen-xl mx-auto px-6">{children}</div>
+
+      <div className="w-[85%] max-w-screen-xl mx-auto overflow-hidden">
+        {user && <SideMenu />}
+
+        <div
+          className={`${user ? "pl-[20rem]" : "pl-6"} pr-6 ${
+            user ? "border-r" : "border-none"
+          } border-slate-100`}
+        >
+          <main className="min-h-[calc(100vh-215px)] pt-6">{children}</main>
+
+          <footer className="h-[150px] py-6">footer</footer>
+        </div>
+      </div>
     </div>
   );
 };

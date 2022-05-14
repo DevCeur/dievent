@@ -32,8 +32,9 @@ export const TextInput = ({
             {...inputProps}
           />
 
-          <button
-            className="absolute top-0 right-0 bottom-0 px-4"
+          <span
+            role="button"
+            className="absolute top-0 right-0 bottom-0 px-4 flex items-center mb-0"
             onClick={handleToggleShowPassword}
           >
             {showPassword ? (
@@ -41,7 +42,7 @@ export const TextInput = ({
             ) : (
               <EyeIcon className={iconClassName} />
             )}
-          </button>
+          </span>
         </div>
       ) : (
         <input
