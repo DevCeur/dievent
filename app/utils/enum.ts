@@ -7,7 +7,11 @@ export const ROUTE = {
   PRICING: "/pricing",
   HELP: "/help",
   DASHBOARD: "/dashboard",
-  PROFILE: "/profile",
+  ACCOUNT: "/account",
+  MY_EVENTS: "/my-events",
+  CALENDAR: "/calendar",
+  SETTINGS: "/settings",
+  CREATE_EVENT: "/create-event",
 };
 
 export const ERROR_MESSAGES = {

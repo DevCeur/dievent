@@ -35,7 +35,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, user }) => {
         >
           <main className="min-h-[calc(100vh-215px)] pt-6">{children}</main>
 
-          <Footer user={user} />
+          {!user && <Footer user={user} />}
         </div>
       </div>
     </div>

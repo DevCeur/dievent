@@ -28,7 +28,7 @@ export const TopNavigation = ({ user }: TopNavigationProps) => {
 
         {user ? (
           <div className="flex items-center space-x-4">
-            <Navlink to={ROUTE.PROFILE}>Profile</Navlink>
+            <Navlink to={ROUTE.ACCOUNT}>Profile</Navlink>
 
             <Form method="post" action="/sign-out">
               <button
