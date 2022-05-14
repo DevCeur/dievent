@@ -12,6 +12,7 @@ export const Navlink: React.FC<NavlinkProps> = ({
   to,
   special,
   children,
+  className,
   ...linkProps
 }) => {
   const location = useLocation();
@@ -27,8 +28,8 @@ export const Navlink: React.FC<NavlinkProps> = ({
           isInRoute ? "text-brand-500" : "text-gray-500"
         } px-3 py-1 rounded ${
           isInRoute ? "hover:text-brand-600" : "hover:text-gray-700"
-        } hover:bg-slate-50 transition-colors`]: !special,
-        [`text-sm font-medium px-4 py-2 text-brand-500 border border-blue-200 hover:bg-brand-500 hover:text-white rounded-lg transition-colors`]:
+        } hover:bg-slate-50 transition-colors ${className}`]: !special,
+        [`text-sm font-medium px-4 py-2 text-brand-500 border border-blue-200 hover:bg-brand-500 hover:text-white rounded-lg transition-colors ${className}`]:
           special,
       })}
     >

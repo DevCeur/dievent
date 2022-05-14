@@ -2,6 +2,7 @@ import { Form, Link, useActionData, useNavigate } from "@remix-run/react";
 
 import { ROUTE } from "~/utils/enum";
 
+import { Navlink } from "~/components/Navlink";
 import { TextInput } from "~/components/TextInput";
 
 export const SignInView = () => {
@@ -13,12 +14,16 @@ export const SignInView = () => {
   };
 
   return (
-    <div className="w-[85%] h-screen max-w-screen-xl mx-auto py-12 grid grid-cols-2 gap-10">
+    <div className="w-[85%] h-screen max-w-screen-xl mx-auto py-6 lg:py-12 grid lg:grid-cols-2 gap-10">
       <div className="relative">
-        <div className="w-full absolute">
+        <div className="w-full lg:absolute flex justify-between items-center">
           <Link to={ROUTE.HOME} className="text-xl text-gray-900 font-semibold">
             DiEvent
           </Link>
+
+          <Navlink to={ROUTE.SIGN_UP} special className="lg:hidden">
+            Create Account
+          </Navlink>
         </div>
 
         <div className="h-full flex flex-1 flex-col justify-center items-center">
@@ -93,7 +98,7 @@ export const SignInView = () => {
       </div>
 
       <div
-        className="w-full h-full py-6 px-8 flex flex-col justify-between rounded-3xl bg-center bg-cover"
+        className="w-full h-full py-6 px-8 hidden lg:flex flex-col justify-between rounded-3xl bg-center bg-cover"
         style={{ backgroundImage: `url(/assets/images/sign-in-hero.jpeg)` }}
       >
         <div className="flex justify-between items-center">

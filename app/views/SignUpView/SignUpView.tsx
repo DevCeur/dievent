@@ -14,9 +14,9 @@ export const SignUpView = () => {
   };
 
   return (
-    <div className="w-[85%] h-screen max-w-screen-xl mx-auto py-12 grid grid-cols-2 gap-10">
+    <div className="w-[85%] h-screen max-w-screen-xl mx-auto py-6 lg:py-12 grid lg:grid-cols-2 gap-10">
       <div
-        className="w-full h-full py-6 px-8 flex flex-col justify-between rounded-3xl bg-center bg-cover"
+        className="w-full h-full py-6 px-8 hidden lg:flex flex-col justify-between rounded-3xl bg-center bg-cover"
         style={{ backgroundImage: `url(/assets/images/sign-up-hero.jpeg)` }}
       >
         <div className="flex justify-between items-center">
@@ -46,16 +46,23 @@ export const SignUpView = () => {
         </div>
       </div>
 
-      <div className="relative">
-        <div className="w-full absolute flex justify-end">
+      <div className="lg:relative flex flex-col justify-between">
+        <div className="w-full lg:absolute flex items-center justify-between lg:justify-end">
+          <Link
+            to={ROUTE.HOME}
+            className="text-xl text-gray-900 font-semibold inline-block lg:hidden"
+          >
+            DiEvent
+          </Link>
+
           <Navlink to={ROUTE.SIGN_IN} special>
             Sign In
           </Navlink>
         </div>
 
-        <div className="h-full flex flex-1 flex-col justify-center items-center">
-          <div>
-            <h1 className="text-center text-2xl font-semibold mb-2">
+        <div className="h-full flex flex-1 flex-col justify-end lg:justify-center items-center">
+          <div className="text-center">
+            <h1 className="text-2xl font-semibold mb-2">
               Let's Create an Account
             </h1>
 

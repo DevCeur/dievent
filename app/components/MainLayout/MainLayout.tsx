@@ -28,13 +28,15 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, user }) => {
         {user && <SideMenu />}
 
         <div
-          className={`${user ? "pl-[20rem]" : "pl-6"} pr-6 ${
-            user ? "border-r" : "border-none"
-          } border-slate-100`}
+          className={`${
+            user ? "lg:pl-[18rem] xl:pl-[20rem]" : "lg:pl-6"
+          } lg:pr-6 ${user ? "lg:border-r" : "border-none"} border-slate-100`}
         >
-          <main className="min-h-[calc(100vh-215px)] pt-6">{children}</main>
+          <main className="min-h-[calc(100vh-190px)] lg:min-h-[calc(100vh-215px)] pt-6">
+            {children}
+          </main>
 
-          <footer className="h-[150px] py-6">footer</footer>
+          <footer className="h-[125px] lg:h-[150px] py-6">footer</footer>
         </div>
       </div>
     </div>
