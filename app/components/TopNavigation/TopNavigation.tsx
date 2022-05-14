@@ -15,7 +15,7 @@ export const TopNavigation = ({ user }: TopNavigationProps) => {
     <nav className="bg-white/30 backdrop-blur-md border-b border-slate-100 sticky top-0">
       <div className="h-16 w-[85%] max-w-screen-xl mx-auto lg:border-x border-slate-100 lg:px-6 flex items-center justify-between">
         <div className="flex items-center">
-          <Link to={ROUTE.HOME}>
+          <Link to={user ? ROUTE.DASHBOARD : ROUTE.HOME}>
             <span className="text-xl text-gray-700 font-semibold">DiEvent</span>
           </Link>
 
@@ -28,7 +28,8 @@ export const TopNavigation = ({ user }: TopNavigationProps) => {
 
         {user ? (
           <div className="flex items-center space-x-4">
-            <Navlink to={ROUTE.HOME}>Profile</Navlink>
+            <Navlink to={ROUTE.PROFILE}>Profile</Navlink>
+
             <Form method="post" action="/sign-out">
               <button
                 type="submit"

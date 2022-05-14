@@ -4,6 +4,7 @@ import type { User } from "@prisma/client";
 
 import { ROUTE } from "~/utils/enum";
 
+import { Footer } from "../Footer";
 import { SideMenu } from "../SideMenu";
 import { TopNavigation } from "../TopNavigation";
 
@@ -32,11 +33,9 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, user }) => {
             user ? "lg:pl-[18rem] xl:pl-[20rem]" : "lg:pl-6"
           } lg:pr-6 ${user ? "lg:border-r" : "border-none"} border-slate-100`}
         >
-          <main className="min-h-[calc(100vh-190px)] lg:min-h-[calc(100vh-215px)] pt-6">
-            {children}
-          </main>
+          <main className="min-h-[calc(100vh-215px)] pt-6">{children}</main>
 
-          <footer className="h-[125px] lg:h-[150px] py-6">footer</footer>
+          <Footer user={user} />
         </div>
       </div>
     </div>

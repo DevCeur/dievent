@@ -5,7 +5,9 @@ export const ROUTE = {
   EVENTS: "/events",
   FEATURES: "/features",
   PRICING: "/pricing",
+  HELP: "/help",
   DASHBOARD: "/dashboard",
+  PROFILE: "/profile",
 };
 
 export const ERROR_MESSAGES = {
@@ -13,4 +15,5 @@ export const ERROR_MESSAGES = {
 };
 
 export const EMAIL_REGEX =
+  // eslint-disable-next-line no-useless-escape
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
