@@ -12,7 +12,7 @@ type TopNavigationProps = {
 
 export const TopNavigation = ({ user }: TopNavigationProps) => {
   return (
-    <nav className="bg-white/30 backdrop-blur-md border-b border-slate-100 sticky top-0">
+    <nav className="bg-white/30 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50">
       <div className="h-16 w-[85%] max-w-screen-xl mx-auto lg:border-x border-slate-100 lg:px-6 flex items-center justify-between">
         <div className="flex items-center">
           <Link to={user ? ROUTE.DASHBOARD : ROUTE.HOME}>

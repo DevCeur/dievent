@@ -30,10 +30,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, user }) => {
 
         <div
           className={`min-h-[calc(100vh-65px)] flex flex-col ${
-            user ? "lg:pl-[18rem] xl:pl-[20rem]" : "lg:pl-6"
+            user ? "lg:pl-[18rem] xl:pl-[312px]" : "lg:pl-6"
           } lg:pr-6 ${user ? "lg:border-r" : "border-none"} border-slate-100`}
         >
-          <main className="flex-1 pt-6">{children}</main>
+          <main className="flex flex-1 pt-6 pb-12">{children}</main>
 
           {!user && <Footer user={user} />}
         </div>

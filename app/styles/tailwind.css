@@ -30,11 +30,35 @@
     @apply text-sm font-medium py-2 px-4 rounded-lg transition-colors;
   }
 
+  .button:disabled {
+    @apply cursor-default opacity-60;
+  }
+
   .button-solid {
     @apply button text-white bg-brand-600 hover:bg-brand-500;
   }
 
+  .button-solid:disabled {
+    @apply hover:bg-brand-600;
+  }
+
+  .button-outline {
+    @apply button text-brand-500 bg-transparent hover:bg-brand-100 hover:text-brand-600 border border-brand-500;
+  }
+
+  .button-ghost {
+    @apply button text-brand-500 bg-transparent hover:bg-brand-100 hover:text-brand-500;
+  }
+
+  .button-ghost:disabled {
+    @apply hover:bg-transparent;
+  }
+
   .error-message {
     @apply text-xs text-red-500 my-2;
+  }
+
+  textarea {
+    @apply text-sm px-4 py-3 border border-slate-200 rounded-lg outline-none focus:border-brand-500 transition-all;
   }
 }
