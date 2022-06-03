@@ -1,3 +1,64 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: fallback;
+  src: url(/assets/fonts/inter-var.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  label {
+    @apply flex flex-col;
+  }
+
+  label span {
+    @apply text-sm text-gray-500 mb-2;
+  }
+
+  .button {
+    @apply text-sm font-medium py-2 px-4 rounded-lg transition-colors;
+  }
+
+  .button:disabled {
+    @apply cursor-default opacity-60;
+  }
+
+  .button-solid {
+    @apply button text-white bg-brand-600 hover:bg-brand-500;
+  }
+
+  .button-solid:disabled {
+    @apply hover:bg-brand-600;
+  }
+
+  .button-outline {
+    @apply button text-brand-500 bg-transparent hover:bg-brand-100 hover:text-brand-600 border border-brand-500;
+  }
+
+  .button-ghost {
+    @apply button text-brand-500 bg-transparent hover:bg-brand-100 hover:text-brand-500;
+  }
+
+  .button-ghost:disabled {
+    @apply hover:bg-transparent;
+  }
+
+  .error-message {
+    @apply text-xs text-red-500 my-2;
+  }
+
+  textarea {
+    @apply text-sm px-4 py-3 border border-slate-200 rounded-lg outline-none focus:border-brand-500 transition-all;
+  }
+}

@@ -1,7 +1,14 @@
-export default function HomeRoute() {
-  return (
-    <div>
-      <h1 className="text-red-500">DiEvent</h1>
-    </div>
-  );
-}
+import { createMeta } from "~/utils/createMeta";
+import { createAuthLoader } from "~/utils/createAuthLoader";
+
+import { HomeView } from "~/views/HomeView";
+
+export const meta = createMeta({ title: "Home" });
+
+export const loader = createAuthLoader({ isPrivate: false });
+
+const HomeRoute = () => {
+  return <HomeView />;
+};
+
+export default HomeRoute;

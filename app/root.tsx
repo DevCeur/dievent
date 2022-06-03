@@ -5,9 +5,19 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from "@remix-run/node";
+import type { User } from "@prisma/client";
+
+import { getUserById } from "./services/user";
+
+import { MainLayout } from "./components/MainLayout";
 
 import tailwindStyles from "./styles/generated/tailwind.css";
 
@@ -21,7 +31,19 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: tailwindStyles },
 ];
 
+type LoaderData = {
+  user: User | null;
+};
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const { user } = await getUserById(request);
+
+  return { user };
+};
+
 export default function App() {
+  const { user } = useLoaderData<LoaderData>();
+
   return (
     <html lang="en">
       <head>
@@ -29,7 +51,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <MainLayout user={user}>
+          <Outlet />
+        </MainLayout>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
